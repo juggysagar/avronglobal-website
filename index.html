@@ -251,15 +251,43 @@
         }
 
 /* Remove the old hero-visual container entirely */
-        .hero-visual {
-    display: none;
-        }
-    
-        @keyframes textureShift {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(1deg); }
+        .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px;
+    background: linear-gradient(135deg, 
+        rgba(184,149,107,0.1) 0%, 
+        rgba(0,29,61,0.4) 50%,
+        rgba(139,154,125,0.1) 100%);
+}
+
+/* The animated texture overlay */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(184,149,107,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139,154,125,0.1) 0%, transparent 40%);
+    opacity: 0.6;
+    animation: textureShift 20s ease-in-out infinite;
+    z-index: 1;
+}
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding-right: 60px;
         }
 
+        /* The floating orbs - positioned absolutely in hero */
         .material-orb {
             position: absolute;
             border-radius: 50%;
@@ -267,16 +295,47 @@
             opacity: 0.2;
             filter: blur(40px);
             animation: orbFloat 15s ease-in-out infinite;
+            z-index: 1;
         }
 
-        .orb-1 { width: 300px; height: 300px; top: 10%; left: 20%; animation-delay: 0s; }
-        .orb-2 { width: 200px; height: 200px; bottom: 20%; right: 10%; animation-delay: -5s; }
-        .orb-3 { width: 150px; height: 150px; top: 50%; left: 50%; animation-delay: -10s; }
+        .orb-1 { 
+            width: 400px; 
+            height: 400px; 
+            top: 10%; 
+            right: 10%;
+            animation-delay: 0s; 
+        }
+
+        .orb-2 { 
+            width: 300px; 
+            height: 300px; 
+            bottom: 20%; 
+            right: 25%; 
+            animation-delay: -5s; 
+        }
+
+        .orb-3 { 
+            width: 250px; 
+            height: 250px; 
+            top: 50%; 
+            right: 40%; 
+            animation-delay: -10s; 
+        }
+
+        @keyframes textureShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(1deg); }
+        }
 
         @keyframes orbFloat {
             0%, 100% { transform: translate(0, 0) scale(1); }
             33% { transform: translate(30px, -30px) scale(1.1); }
             66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Remove the old hero-visual container */
+        .hero-visual {
+            display: none;
         }
 
         section {
@@ -446,21 +505,19 @@
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            border: 4px solid var(--aged-brass);  /* The brass ring border */
-            padding: 3px;                         /* Space between photo and border */
-            background-color: var(--stone);       /* Background behind photo */
-            margin: 0 auto 24px;                  /* Centered with spacing below */
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 4px solid var(--aged-brass);
+            overflow: hidden;           /* This clips the scaled image */
+            margin: 0 auto 24px;
+            position: relative;
         }
 
-        /* The actual photo inside */
         .partner-photo img {
             width: 100%;
             height: 100%;
-            border-radius: 50%;                   /* Makes photo circular */
-            object-fit: cover;                    /* Fills space without stretching */
-            object-position: center 20%;          /* Adjust if face is too low */
+            object-fit: cover;
+            object-position: center 20%;  /* Focus on upper body */
+            transform: scale(1.5);        /* Zoom in 50% */
+            /* No margin-top needed! */
         }
 
         /* Remove old material icon styles */
@@ -634,14 +691,18 @@
     </nav>
 
     <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-label">Strategic Growth Advisory</div>
-            <h1>Capital for Ambition.<br>Strategy for Scale.</h1>
-            <div class="brass-line"></div>
-            <p class="lead">Independent growth consultants. The architectural bridge between visionary leadership and institutional capital.</p>
-            <p style="font-size: 16px; opacity: 0.7; margin-top: 48px; font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 1px;">London &nbsp;•&nbsp; GCC &nbsp;•&nbsp; Global Network</p>
-        </div>
-    </section>
+    <div class="container hero-content">
+        <div class="hero-label">Strategic Growth Advisory</div>
+        <h1>Capital for Ambition.<br>Strategy for Scale.</h1>
+        <div class="brass-line"></div>
+        <p class="lead">Independent growth consultants. The architectural bridge between visionary leadership and institutional capital.</p>
+    </div>
+    
+    <!-- Orbs inside hero, outside content -->
+    <div class="material-orb orb-1"></div>
+    <div class="material-orb orb-2"></div>
+    <div class="material-orb orb-3"></div>
+</section>
 
     <section class="light" id="about">
         <div class="container">
