@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    
     <style>
         :root {
             --navy: #001D3D;
@@ -18,86 +18,88 @@
             --aged-brass: #B8956B;
             --brass-light: #C4A77D;
             --cream: #FAF8F5;
-
+            
             --font-display: 'Crimson Text', Georgia, serif;
-            --font-body: 'Crimson Text', Georgia, serif;
             --font-ui: 'Inter', Arial, sans-serif;
-
+            
             --transition-slow: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-medium: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         html {
             scroll-behavior: smooth;
         }
-
+        
         body {
-            font-family: var(--font-body);
+            font-family: var(--font-display);
             color: var(--stone);
             background-color: var(--navy);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            font-size: 19px;
         }
-
+        
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 60px;
         }
-
-        h1, h2, h3 {
+        
+        /* TYPOGRAPHY HIERARCHY */
+        h1 {
             font-family: var(--font-display);
+            font-size: 64px;
+            line-height: 1.1;
+            color: var(--stone);
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        
+        h2 {
+            font-family: var(--font-display);
+            font-size: 52px;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: var(--navy);
             font-weight: 400;
             letter-spacing: -0.02em;
         }
-
-        h1 {
-            font-size: 72px;
-            line-height: 1.1;
-            color: var(--stone);
-            margin-bottom: 32px;
-            font-weight: 600;
-        }
-
-        h2 {
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            color: var(--navy);
-        }
-
+        
         h3 {
+            font-family: var(--font-display);
             font-size: 28px;
             line-height: 1.3;
             margin-bottom: 16px;
             color: var(--navy);
+            font-weight: 400;
         }
-
+        
         p {
-            font-family: var(--font-body);
-            font-size: 20px;
-            line-height: 1.8;
+            font-family: var(--font-display);
+            font-size: 19px;
+            line-height: 1.7;
             color: var(--sand);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             font-weight: 400;
             max-width: 65ch;
         }
-
+        
         .lead {
-            font-size: 24px;
+            font-size: 22px;
             line-height: 1.6;
             color: var(--stone);
             font-weight: 400;
             opacity: 0.9;
         }
-
+        
         .brass-line {
             width: 80px;
             height: 2px;
@@ -105,11 +107,39 @@
             margin: 32px 0;
             transition: width var(--transition-slow);
         }
-
+        
         .brass-line.long {
             width: 120px;
         }
-
+        
+        /* LOGO - Crimson Text (sophisticated, no caps) */
+        .logo {
+            font-family: var(--font-display);
+            font-size: 22px;
+            letter-spacing: 2px;
+            font-weight: 400;
+            text-transform: none;
+            color: var(--stone);
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--aged-brass);
+            transition: width 0.3s ease;
+        }
+        
+        .logo:hover::after {
+            width: 100%;
+        }
+        
+        /* NAVIGATION */
         nav {
             position: fixed;
             top: 0;
@@ -123,44 +153,19 @@
             transition: all var(--transition-medium);
             background: linear-gradient(to bottom, rgba(0,29,61,0.9), transparent);
         }
-
+        
         nav.scrolled {
             background: rgba(0,29,61,0.95);
             backdrop-filter: blur(10px);
             padding: 20px 60px;
             border-bottom: 1px solid rgba(184,149,107,0.2);
         }
-
-        .logo {
-            font-family: var(--font-display);
-            font-size: 24px;
-            color: var(--stone);
-            text-decoration: none;
-            letter-spacing: 2px;
-            font-weight: 600;
-            position: relative;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--aged-brass);
-            transition: width 0.3s ease;
-        }
-
-        .logo:hover::after {
-            width: 100%;
-        }
-
+        
         .nav-links {
             display: flex;
             gap: 48px;
         }
-
+        
         .nav-links a {
             color: var(--sand);
             text-decoration: none;
@@ -172,11 +177,11 @@
             position: relative;
             transition: color 0.3s ease;
         }
-
+        
         .nav-links a:hover {
             color: var(--aged-brass);
         }
-
+        
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -187,23 +192,24 @@
             background-color: var(--aged-brass);
             transition: width var(--transition-medium);
         }
-
+        
         .nav-links a:hover::after {
             width: 100%;
         }
-
+        
+        /* HERO - Full width image */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 120px;
+            padding: 100px 60px;
             background-image: url('hero-bg.jpg');
             background-size: cover;
             background-position: center;
         }
-
+        
         .hero::before {
             content: '';
             position: absolute;
@@ -217,214 +223,71 @@
                 rgba(0,29,61,0.6) 100%);
             z-index: 1;
         }
-
+        
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 700px;
-            padding-right: 60px;
+            max-width: 650px;
+            padding: 0;
         }
-
-        section {
-            padding: 160px 0;
-            position: relative;
-        }
-
-        section.light {
-            background-color: var(--stone);
-        }
-
-        section.light h2,
-        section.light h3 {
-            color: var(--navy);
-        }
-
-        section.light p {
-            color: var(--charcoal);
-        }
-
-        section.light .brass-line {
-            background: linear-gradient(90deg, var(--navy), var(--aged-brass));
-        }
-
-        .asymmetric-grid {
-            display: grid;
-            grid-template-columns: 55% 45%;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .asymmetric-grid.reverse {
-            grid-template-columns: 45% 55%;
-        }
-
-        .section-header-alt {
-            margin-bottom: 80px;
-            max-width: 70%;
-        }
-
-        .services-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .service-item-2026 {
-            border-bottom: 1px solid rgba(0,29,61,0.1);
-            padding: 40px 0;
-            cursor: pointer;
-            transition: all var(--transition-medium);
-        }
-
-        .service-item-2026:hover {
-            padding-left: 20px;
-            border-left: 2px solid var(--aged-brass);
-        }
-
-        .service-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 16px;
-        }
-
-        .service-title {
-            font-family: var(--font-display);
-            font-size: 32px;
-            color: var(--navy);
-            margin: 0;
-            font-weight: 400;
-            transition: color 0.3s ease;
-        }
-
-        .service-item-2026:hover .service-title {
-            color: var(--aged-brass);
-        }
-
-        .service-number {
-            font-family: var(--font-ui);
-            font-size: 12px;
-            color: var(--aged-brass);
-            letter-spacing: 2px;
-        }
-
-        .service-desc {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height var(--transition-slow), opacity var(--transition-medium);
-            opacity: 0;
-        }
-
-        .service-item-2026:hover .service-desc {
-            max-height: 300px;
-            opacity: 1;
-        }
-
-        .service-desc p {
-            font-size: 16px;
-            color: var(--charcoal);
-            max-width: 80%;
-            margin-top: 16px;
-        }
-
-        .leadership-grid-2026 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 80px;
-        }
-
-        .leader-card-2026 {
-            background: var(--cream);
-            padding: 48px 40px;
-            border: 1px solid rgba(0,29,61,0.08);
-            position: relative;
-            overflow: hidden;
-            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-        }
-
-        .leader-card-2026::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--aged-brass), transparent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform var(--transition-medium);
-        }
-
-        .leader-card-2026:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .leader-card-2026:hover::before {
-            transform: scaleX(1);
-        }
-
-        .leader-card-2026 h3 {
-            font-family: var(--font-display);
-            font-size: 28px;
-            margin-bottom: 8px;
-            color: var(--navy);
-        }
-
-        .leader-title-2026 {
+        
+        .hero-label {
             font-family: var(--font-ui);
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: var(--aged-brass);
             margin-bottom: 24px;
             font-weight: 600;
         }
-
-        .leader-card-2026 p {
-            font-size: 15px;
-            line-height: 1.7;
-            color: var(--charcoal);
-        }
-
-        /* Container for the circular photo with brass border */
-        .partner-photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 4px solid var(--aged-brass);
-            overflow: hidden;           /* This clips the scaled image */
-            margin: 0 auto 24px;
+        
+        /* SECTIONS - Reduced padding */
+        section {
+            padding: 100px 0;
             position: relative;
         }
-
-        .partner-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            transform: scale(1.3) translateY(10%);
+        
+        section.light {
+            background-color: var(--stone);
         }
-
-        /* Remove old material icon styles */
-        .material-icon {
-            display: none;
+        
+        section.light h2,
+        section.light h3 {
+            color: var(--navy);
         }
-
-        /* Optional: Slight zoom on hover */
-        .partner-photo {
-            transition: none;  /* No animation */
+        
+        section.light p {
+            color: var(--charcoal);
         }
-
-        .partner-photo:hover {
-            transform: none;  /* No hover effect */
+        
+        section.light .brass-line {
+            background: linear-gradient(90deg, var(--navy), var(--aged-brass));
         }
-
+        
+        /* ABOUT - Age of Velocity (tighter grid) */
+        #about .container {
+            max-width: 1200px;
+        }
+        
+        #about .asymmetric-grid.reverse {
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        #about h2 {
+            font-size: 52px;
+            line-height: 1.1;
+        }
+        
+        /* PHILOSOPHY - Model section (keep generous) */
         .dark-section-2026 {
             background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
             position: relative;
+            padding: 120px 0;
         }
-
+        
         .dark-section-2026::before {
             content: '';
             position: absolute;
@@ -437,14 +300,217 @@
                 radial-gradient(circle at 90% 80%, rgba(139,154,125,0.05) 0%, transparent 40%);
             pointer-events: none;
         }
-
+        
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 55% 45%;
+            gap: 80px;
+            align-items: start;
+        }
+        
+        .section-header-alt {
+            margin-bottom: 60px;
+            max-width: 70%;
+        }
+        
+        /* SERVICES - Accordion */
+        .services-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .service-item-2026 {
+            border-bottom: 1px solid rgba(0,29,61,0.1);
+            padding: 40px 0;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+        }
+        
+        .service-item-2026:hover {
+            padding-left: 20px;
+            border-left: 2px solid var(--aged-brass);
+        }
+        
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 16px;
+        }
+        
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 32px;
+            color: var(--navy);
+            margin: 0;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        
+        .service-item-2026:hover .service-title {
+            color: var(--aged-brass);
+        }
+        
+        .service-number {
+            font-family: var(--font-ui);
+            font-size: 12px;
+            color: var(--aged-brass);
+            letter-spacing: 2px;
+        }
+        
+        .service-desc {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow), opacity var(--transition-medium);
+            opacity: 0;
+        }
+        
+        .service-item-2026:hover .service-desc {
+            max-height: 300px;
+            opacity: 1;
+        }
+        
+        .service-desc p {
+            font-size: 17px;
+            color: var(--charcoal);
+            max-width: 80%;
+            margin-top: 16px;
+        }
+        
+        /* LEADERSHIP - Team section */
+        .leadership-grid-2026 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+        
+        .leader-card-2026 {
+            background: var(--cream);
+            padding: 48px 40px;
+            border: 1px solid rgba(0,29,61,0.08);
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+        }
+        
+        .leader-card-2026::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--aged-brass), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-medium);
+        }
+        
+        .leader-card-2026:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .leader-card-2026:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .leader-card-2026 h3 {
+            font-family: var(--font-display);
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: var(--navy);
+            text-align: center;
+        }
+        
+        .leader-title-2026 {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--aged-brass);
+            margin-bottom: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .leader-card-2026 p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--charcoal);
+            text-align: center;
+        }
+        
+        /* PARTNER PHOTOS - Fixed zoom */
+        .partner-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--aged-brass);
+            overflow: hidden;
+            margin: 0 auto 24px;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .partner-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 50%;
+            transform: scale(1.3) translateY(10%);
+            display: block;
+            transition: none; /* No hover animation */
+        }
+        
+        /* HERITAGE - Centered like Philosophy */
+        #integrity {
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        #integrity .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        
+        #integrity h2 {
+            color: var(--stone);
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        
+        #integrity .brass-line {
+            margin: 0 auto 32px;
+        }
+        
+        #integrity .lead {
+            color: var(--sand);
+            margin-bottom: 40px;
+        }
+        
+        #integrity p {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            text-align: center;
+            color: var(--sand);
+        }
+        
+        #integrity p:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        /* CONTACT */
         .contact-2026 {
             background-color: var(--charcoal);
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 100px 0;
         }
-
+        
         .contact-2026::before {
             content: '';
             position: absolute;
@@ -454,43 +520,64 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--aged-brass), transparent);
         }
-
+        
         .contact-2026 h2 {
             color: var(--stone);
         }
-
+        
         .contact-2026 p {
             color: var(--sand);
             max-width: 600px;
             margin: 0 auto 48px;
         }
-
+        
         .contact-info-2026 {
             margin-top: 64px;
             padding-top: 48px;
             border-top: 1px solid rgba(184,149,107,0.2);
         }
-
+        
         .contact-info-2026 p {
             font-family: var(--font-display);
             font-size: 32px;
             color: var(--stone);
             margin-bottom: 16px;
         }
-
+        
         .contact-detail {
             font-family: var(--font-ui) !important;
             font-size: 14px !important;
             color: var(--brass-light) !important;
             letter-spacing: 1px;
+            margin-bottom: 8px;
         }
-
+        
+        .contact-linkedin {
+            margin-top: 24px;
+        }
+        
+        .contact-linkedin a {
+            color: var(--brass-light);
+            text-decoration: none;
+            font-family: var(--font-ui);
+            font-size: 13px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--aged-brass);
+            padding-bottom: 2px;
+            transition: color 0.3s;
+        }
+        
+        .contact-linkedin a:hover {
+            color: var(--aged-brass);
+        }
+        
+        /* FOOTER */
         footer {
             background-color: var(--navy);
             padding: 48px 0;
             border-top: 1px solid rgba(184,149,107,0.15);
         }
-
+        
         .footer-content {
             display: flex;
             justify-content: space-between;
@@ -500,7 +587,7 @@
             color: var(--sand);
             letter-spacing: 0.5px;
         }
-
+        
         .footer-links a {
             color: var(--sand);
             text-decoration: none;
@@ -508,102 +595,103 @@
             transition: color 0.3s ease;
             position: relative;
         }
-
+        
         .footer-links a:hover {
             color: var(--aged-brass);
         }
-
+        
+        /* REVEAL ANIMATION */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
+        
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-
+        
+        /* MOBILE */
         @media (max-width: 1024px) {
             .hero {
-                grid-template-columns: 1fr;
-                padding-top: 160px;
+                padding: 80px 24px;
             }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .asymmetric-grid,
-            .asymmetric-grid.reverse {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-
-            .leadership-grid-2026 {
-                grid-template-columns: 1fr;
-            }
-
+            
             h1 {
                 font-size: 48px;
             }
-
+            
             h2 {
-                font-size: 36px;
+                font-size: 40px;
             }
-
+            
+            #about .asymmetric-grid.reverse {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .leadership-grid-2026 {
+                grid-template-columns: 1fr;
+            }
+            
             .container {
                 padding: 0 24px;
             }
-
+            
             nav {
                 padding: 24px;
             }
-
+            
             .nav-links {
                 display: none;
             }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .footer-links a {
+                margin: 0 16px;
+            }
         }
     </style>
-<base>
 </head>
 <body>
 
     <nav id="navbar">
-        <a href="#" class="logo" style="font-family: 'Copperplate', 'Copperplate Gothic Light', serif; font-size: 20px; letter-spacing: 4px; font-weight: 700; text-transform: uppercase;">Avron Global</a>
+        <a href="#" class="logo">Avron Global</a>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="#leadership">Leadership</a>
+            <a href="#leadership">Team</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <section class="hero">
-    <div class="container hero-content">
-        <div class="hero-label">Strategic Growth Advisory</div>
-        <h1>Capital for Ambition.<br>Strategy for Scale.</h1>
-        <div class="brass-line"></div>
-        <p class="lead">Independent growth consultants. The architectural bridge between visionary leadership and institutional capital.</p>
-    </div>
-    
-    <!-- Orbs inside hero, outside content -->
-    <div class="material-orb orb-1"></div>
-    <div class="material-orb orb-2"></div>
-    <div class="material-orb orb-3"></div>
-</section>
+        <div class="container hero-content">
+            <div class="hero-label">Strategic Growth Advisory</div>
+            <h1>Capital for<br>Ambition.<br>Strategy for<br>Scale.</h1>
+            <div class="brass-line"></div>
+            <p class="lead">Independent growth consultants. The architectural bridge between visionary leadership and institutional capital.</p>
+            <p style="font-size: 16px; opacity: 0.7; margin-top: 48px; font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 1px;">London &nbsp;•&nbsp; GCC &nbsp;•&nbsp; Global Network</p>
+        </div>
+    </section>
 
     <section class="light" id="about">
         <div class="container">
-            <div class="asymmetric-grid reverse">
-                <div class="reveal">
+            <div class="asymmetric-grid reverse reveal">
+                <div>
                     <div class="brass-line"></div>
-                    <h2>Institutional<br>Judgment<br>in an Age of<br>Velocity.</h2>
+                    <h2>Institutional Judgment in an Age of Velocity.</h2>
                 </div>
-                <div class="reveal">
+                <div>
                     <p class="lead">We function as an extension of the boardroom—providing analytical rigor and network access cultivated through decades of institutional practice.</p>
                     <p>Independent advisors registered under the Companies Law of England and Wales, with heritage tracing to the Kingdom of Bahrain. Our collective experience spans sovereign wealth advisory, cross-border M&A, and strategic management across GCC, Europe, and emerging growth corridors.</p>
-                    <p style="font-size: 14px; opacity: 0.7; margin-top: 32px; font-style: italic; border-left: 2px solid var(--aged-brass); padding-left: 20px;">"We serve few, deeply."</p>
+                    <p style="font-size: 15px; opacity: 0.7; margin-top: 32px; font-style: italic; border-left: 2px solid var(--aged-brass); padding-left: 20px;">"We serve few, deeply."</p>
                 </div>
             </div>
         </div>
@@ -616,7 +704,7 @@
                 <h2 style="color: var(--stone);">Our Philosophy</h2>
                 <p class="lead" style="color: var(--sand);">Aligned Interests. Asymmetric Insight. Absolute Discretion.</p>
             </div>
-
+            
             <div class="asymmetric-grid reveal">
                 <div>
                     <p>Our advisory model embeds within client leadership teams for extended engagements. We deploy methodologies refined through multiple market cycles—frameworks that adapt to regulatory architecture across jurisdictions, liquidity requirements through economic phases, and strategic optionality for subsequent growth.</p>
@@ -632,10 +720,10 @@
         <div class="container">
             <div class="section-header-alt reveal">
                 <div class="brass-line"></div>
-                <h2>Services</h2>
+                <h2>Advisory Capabilities</h2>
                 <p class="lead">Independent consultancy for capital formation and strategic expansion.</p>
             </div>
-
+            
             <div class="services-container reveal">
                 <div class="service-item-2026">
                     <div class="service-header">
@@ -646,7 +734,7 @@
                         <p>Guidance on capital formation strategies across global markets. We advise on private placements, institutional debt offerings, and financing structures that optimize cost of capital while preserving strategic flexibility.</p>
                     </div>
                 </div>
-
+                
                 <div class="service-item-2026">
                     <div class="service-header">
                         <h3 class="service-title">Institutional Network Access</h3>
@@ -656,7 +744,7 @@
                         <p>Facilitation of introductions to institutional investors, family offices, and private equity sponsors across North America, Europe, the GCC, and Asia-Pacific.</p>
                     </div>
                 </div>
-
+                
                 <div class="service-item-2026">
                     <div class="service-header">
                         <h3 class="service-title">Strategic Growth Consulting</h3>
@@ -666,7 +754,7 @@
                         <p>Advisory on market entry across GCC, Europe, and emerging markets. Including organizational design for scale and multi-year value creation planning.</p>
                     </div>
                 </div>
-
+                
                 <div class="service-item-2026">
                     <div class="service-header">
                         <h3 class="service-title">M&A Advisory</h3>
@@ -676,7 +764,7 @@
                         <p>Strategic advisory for buyers and sellers, with focus on cross-border transactions and complex regulatory navigation.</p>
                     </div>
                 </div>
-
+                
                 <div class="service-item-2026">
                     <div class="service-header">
                         <h3 class="service-title">Capital Structure Consulting</h3>
@@ -686,7 +774,7 @@
                         <p>Analysis of debt covenants, equity profiles, and cost-of-capital metrics to advise on balance sheet architecture for resilience.</p>
                     </div>
                 </div>
-
+                
                 <div class="service-item-2026">
                     <div class="service-header">
                         <h3 class="service-title">Pre-IPO Preparation</h3>
@@ -704,32 +792,32 @@
         <div class="container">
             <div class="section-header-alt reveal">
                 <div class="brass-line long"></div>
-                <h2>Leadership</h2>
+                <h2>Team</h2>
                 <p class="lead">Deep expertise across financial technology, strategic management, and cross-border investment.</p>
             </div>
-
+            
             <div class="leadership-grid-2026 reveal">
                 <div class="leader-card-2026">
                     <div class="partner-photo">
-                        <img src="Jagdish.jpg" alt="Jagdish - Managing Partner">
+                        <img src="Jagdish.jpg" alt="Jagdish">
                     </div>
                     <h3>Jagdish</h3>
                     <div class="leader-title-2026">Managing Partner</div>
                     <p>Bahrain heritage. Former leader of the region's premier fintech enterprise. MSc in Financial Technology. Specialization in digital transformation and sovereign technology initiatives.</p>
                 </div>
-
+                
                 <div class="leader-card-2026">
                     <div class="partner-photo">
-                        <img src="George.jpg" alt="George - Partner, Strategy & Operations">
+                        <img src="George.jpg" alt="George">
                     </div>
                     <h3>George</h3>
                     <div class="leader-title-2026">Partner, Strategy & Operations</div>
                     <p>Professor of Business Management, Data Science, and AI at University of Europe. Former defence sector. Doctorate in Strategy (in progress), MBA in Operations Management.</p>
                 </div>
-
+                
                 <div class="leader-card-2026">
                     <div class="partner-photo">
-                        <img src="Rakesh.jpg" alt="Rakesh - Partner, Capital Markets">
+                        <img src="Rakesh.jpg" alt="Rakesh">
                     </div>
                     <h3>Rakesh</h3>
                     <div class="leader-title-2026">Partner, Capital Markets</div>
@@ -739,19 +827,18 @@
         </div>
     </section>
 
-    <section class="dark-section-2026">
+    <section class="dark-section-2026" id="integrity">
         <div class="container">
-            <div class="asymmetric-grid reveal">
-                <div>
-                    <div class="brass-line"></div>
-                    <h2 style="color: var(--stone);">Heritage & Integrity</h2>
-                    <p class="lead" style="color: var(--sand);">Depth requires focus.</p>
-                </div>
-                <div>
-                    <p>We maintain a limited practice, ensuring each relationship receives the depth of attention, strategic rigor, and senior-level focus required for transformative outcomes.</p>
-                    <p style="border-left: 2px solid var(--aged-brass); padding-left: 24px; margin-top: 32px; font-style: italic; color: var(--aged-brass);">"We measure success by the longevity of the partnerships we build and the depth of value we create."</p>
-                    <p style="margin-top: 32px;">This discipline preserves the quality of our advisory relationships and maintains the integrity of our network. We are relationship-architected, built for duration.</p>
-                </div>
+            <div class="reveal">
+                <div class="brass-line" style="margin: 0 auto 32px;"></div>
+                <h2>Heritage & Integrity.</h2>
+                <p class="lead" style="margin-bottom: 40px;">Depth requires focus.</p>
+                
+                <p>We maintain a limited practice, ensuring each relationship receives the depth of attention, strategic rigor, and senior-level focus required for transformative outcomes.</p>
+                
+                <p style="font-style: italic; color: var(--brass-light); font-size: 22px; margin: 32px auto;">"We measure success by the longevity of the partnerships we build and the depth of value we create."</p>
+                
+                <p>This discipline preserves the quality of our advisory relationships and maintains the integrity of our network. We are relationship-architected, built for duration.</p>
             </div>
         </div>
     </section>
@@ -761,11 +848,14 @@
             <div class="brass-line" style="margin: 0 auto 32px;"></div>
             <h2>Begin the Conversation.</h2>
             <p>Engagements commence with a confidential discussion of strategic objectives. We operate under strict non-disclosure protocols from first contact.</p>
-               <a href="https://uk.linkedin.com/company/avronglobal" target="_blank" style="color: var(--brass-light); text-decoration: none; font-family: var(--font-ui); font-size: 13px; letter-spacing: 1px; border-bottom: 1px solid var(--aged-brass); padding-bottom: 2px;">
-                    LinkedIn →
-                </a>
-                </p>
-            </div>
+            
+            <div class="contact-info-2026">
+                <p>London, United Kingdom</p>
+                <p class="contact-detail">+44 (0) 20 XXXX XXXX</p>
+                <p class="contact-detail" style="color: var(--aged-brass) !important;">advisory@avronglobal.com</p>
+                <div class="contact-linkedin">
+                    <a href="https://linkedin.com/company/avron-global" target="_blank">LinkedIn →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -790,9 +880,8 @@
                 nav.classList.remove('scrolled');
             }
         });
-
+        
         const reveals = document.querySelectorAll('.reveal');
-
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -800,7 +889,6 @@
                 }
             });
         }, { threshold: 0.1 });
-
         reveals.forEach(el => revealObserver.observe(el));
     </script>
 
