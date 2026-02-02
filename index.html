@@ -553,22 +553,29 @@
         }
         
         .contact-linkedin {
-            margin-top: 24px;
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
         }
-        
+
         .contact-linkedin a {
-            color: var(--brass-light);
-            text-decoration: none;
-            font-family: var(--font-ui);
-            font-size: 13px;
-            letter-spacing: 1px;
-            border-bottom: 1px solid var(--aged-brass);
-            padding-bottom: 2px;
-            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--aged-brass);
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
-        
+
         .contact-linkedin a:hover {
-            color: var(--aged-brass);
+            background-color: rgba(184,149,107,0.1);
+            transform: translateY(-2px);
+        }
+
+        .contact-linkedin svg {
+            display: block;
         }
         
         /* FOOTER */
@@ -681,7 +688,7 @@
             <div class="hero-label">Strategic Growth Advisory</div>
             <h1>Capital for Ambition.<br>Strategy for Scale.</h1>
             <div class="brass-line"></div>
-            <p class="lead">Independent growth consultants. The architectural bridge between visionary leadership and institutional capital.</p>
+            <p class="lead">The architectural bridge between visionary leadership and institutional capital.</p>
             <p style="font-size: 16px; opacity: 0.7; margin-top: 48px; font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 1px;">London &nbsp;•&nbsp; GCC &nbsp;•&nbsp; Global Network</p>
         </div>
     </section>
@@ -694,8 +701,8 @@
                     <h2>Institutional Judgment in an Age of Velocity.</h2>
                 </div>
                 <div>
-                    <p class="lead">We function as an extension of the boardroom—providing analytical rigor and network access cultivated through decades of institutional practice.</p>
-                    <p>Independent advisors registered under the Companies Law of England and Wales, with heritage tracing to the Kingdom of Bahrain. Our collective experience spans sovereign wealth advisory, cross-border M&A, and strategic management across GCC, Europe, and emerging growth corridors.</p>
+                    <p class="lead">We are an extension of the boardroom—providing analytical rigour and network access cultivated through decades of institutional practice.</p>
+                    <p>Registered in The City of London, with heritage tracing to the Kingdom of Bahrain. Our collective experience positions us as a trusted counsel to family offices and sovereign entities.</p>
                     <p style="font-size: 16px; opacity: 0.7; margin-top: 32px; font-style: italic; border-left: 2px solid var(--aged-brass); padding-left: 20px;">"We serve few, deeply."</p>
                 </div>
             </div>
@@ -712,7 +719,7 @@
             
             <div class="asymmetric-grid reveal">
                 <div>
-                    <p>Our advisory model embeds within client leadership teams for extended engagements. We deploy methodologies refined through multiple market cycles—frameworks that adapt to regulatory architecture across jurisdictions, liquidity requirements through economic phases, and strategic optionality for subsequent growth.</p>
+                    <p>We embed within family councils and sovereign investment committees for multi-year engagements. Our methodologies have evolved through economic cycles, regulatory shifts, and generational transitions across jurisdictions. Our value manifests in the preservation and growth of wealth across decades.</p>
                 </div>
                 <div style="border-left: 1px solid rgba(184,149,107,0.3); padding-left: 48px;">
                     <p style="font-family: var(--font-display); font-size: 24px; font-style: italic; color: var(--aged-brass);">"We measure success by the depth of value created across decades of partnership."</p>
@@ -839,7 +846,7 @@
                 <h2>Heritage & Integrity</h2>
                 <p class="lead" style="margin-bottom: 40px;">Depth requires focus.</p>
                 
-                <p>We maintain a limited practice, ensuring each relationship receives the depth of attention, strategic rigor, and senior-level focus required for transformative outcomes.</p>
+                <p>Our partners have advised capital pools across GCC, Europe, and Asia-Pacific. We maintain a focused practice, ensuring each relationship receives senior partner attention.</p>
                 
                 <p style="font-style: italic; color: var(--brass-light); font-size: 22px; margin: 32px auto;">"We measure success by the longevity of the partnerships we build and the depth of value we create."</p>
                 
@@ -852,10 +859,14 @@
         <div class="container reveal">
             <div class="brass-line" style="margin: 0 auto 32px;"></div>
             <h2>Begin the Conversation.</h2>
-            <p>Engagements commence with a confidential discussion of strategic objectives. We operate under strict non-disclosure protocols from first contact.</p>
+            <p>Engagements commence by introduction. We honour strict non-disclosure protocols and exclusive advisory relationships.</p>
             
                 <div class="contact-linkedin">
-                    <a href="https://linkedin.com/company/avron-global" target="_blank">LinkedIn →</a>
+                    <a href="https://linkedin.com/company/avron-global" target="_blank" aria-label="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s;">
+                            <path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.786V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.264 6.499 3.264 5.356C3.264 4.214 4.193 3.28 5.337 3.28C6.477 3.28 7.409 4.214 7.409 5.356C7.409 6.499 6.477 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.225C23.207 24 24 23.227 24 22.271V1.729C24 0.774 23.207 0 22.225 0Z" fill="#B8956B"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -863,7 +874,7 @@
 
     <footer>
         <div class="container footer-content">
-            <div>© 2026 Avron Global Ltd. Registered in England and Wales.</div>
+            <div>© 2026 Avron Global Ltd.</div>
             <div class="footer-links">
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="terms-and-conditions.html">Terms & Conditions</a>
