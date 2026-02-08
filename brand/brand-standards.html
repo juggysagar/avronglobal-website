@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avron Global — Brand Identity Standards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy: #001D3D;
+            --navy-light: #0A2942;
+            --charcoal: #2C2C2C;
+            --stone: #F5F1EB;
+            --sand: #E8E0D5;
+            --aged-brass: #B8956B;
+            --brass-light: #C4A77D;
+            --cream: #FAF8F5;
+            
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Crimson Text', Georgia, serif;
+            --font-ui: 'Inter', Arial, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--charcoal);
+            background: var(--cream);
+            line-height: 1.6;
+            font-size: 11pt;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Cover Page */
+        .cover {
+            width: 210mm;
+            height: 297mm;
+            background: var(--navy);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+            position: relative;
+            page-break-after: always;
+        }
+        
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(184,149,107,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139,154,125,0.05) 0%, transparent 40%);
+        }
+        
+        .cover-logo {
+            background: var(--navy);
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 12px solid var(--aged-brass);
+            margin-bottom: 48px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .cover-logo span {
+            font-family: var(--font-display);
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--stone);
+            letter-spacing: 0.12em;
+            text-indent: 0.12em;
+        }
+        
+        .cover-title {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--stone);
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover-subtitle {
+            font-family: var(--font-ui);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--aged-brass);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover-line {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--aged-brass), transparent);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover-meta {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            color: var(--sand);
+            letter-spacing: 0.1em;
+            position: relative;
+            z-index: 1;
+            opacity: 0.8;
+        }
+        
+        /* Content Pages */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 60px;
+            background: var(--cream);
+            page-break-after: always;
+            position: relative;
+        }
+        
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--sand);
+        }
+        
+        .page-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .page-logo-mark {
+            background: var(--navy);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 4px solid var(--aged-brass);
+        }
+        
+        .page-logo-mark span {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--stone);
+            letter-spacing: 0.1em;
+        }
+        
+        .page-logo-text {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            letter-spacing: 0.05em;
+        }
+        
+        .page-number {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            color: var(--aged-brass);
+            letter-spacing: 0.15em;
+        }
+        
+        /* Typography */
+        h1 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+        }
+        
+        h3 {
+            font-family: var(--font-ui);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-top: 28px;
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        p {
+            margin-bottom: 16px;
+            max-width: 65ch;
+        }
+        
+        .lead {
+            font-size: 13pt;
+            color: var(--charcoal);
+            margin-bottom: 32px;
+            font-style: italic;
+            border-left: 3px solid var(--aged-brass);
+            padding-left: 24px;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-family: var(--font-ui);
+            font-size: 10px;
+        }
+        
+        th {
+            text-align: left;
+            padding: 12px;
+            background: var(--navy);
+            color: var(--stone);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 9px;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--sand);
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(232,224,213,0.3);
+        }
+        
+        /* Color Swatches */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 32px 0;
+        }
+        
+        .color-swatch {
+            text-align: center;
+        }
+        
+        .color-block {
+            height: 80px;
+            margin-bottom: 12px;
+            border: 1px solid var(--sand);
+        }
+        
+        .color-name {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        
+        .color-hex {
+            font-family: var(--font-ui);
+            font-size: 10px;
+            color: var(--charcoal);
+            font-family: monospace;
+        }
+        
+        /* Logo Specs */
+        .logo-spec {
+            display: flex;
+            gap: 40px;
+            margin: 32px 0;
+            align-items: center;
+        }
+        
+        .logo-spec-visual {
+            flex-shrink: 0;
+        }
+        
+        .logo-spec-details {
+            flex: 1;
+        }
+        
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--sand);
+            font-family: var(--font-ui);
+            font-size: 10px;
+        }
+        
+        .spec-label {
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+        
+        .spec-value {
+            color: var(--navy);
+            font-family: monospace;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--navy);
+            color: var(--stone);
+            padding: 32px;
+            margin: 32px 0;
+        }
+        
+        .highlight-box h3 {
+            color: var(--aged-brass);
+            margin-top: 0;
+        }
+        
+        .highlight-box p {
+            color: var(--sand);
+            margin-bottom: 0;
+        }
+        
+        /* Two Column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 32px 0;
+        }
+        
+        /* Footer */
+        .document-footer {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            right: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            border-top: 1px solid var(--sand);
+            font-family: var(--font-ui);
+            font-size: 9px;
+            color: var(--charcoal);
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .page {
+                page-break-after: always;
+            }
+            
+            .cover {
+                page-break-after: always;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+        
+        /* Utility */
+        .text-brass { color: var(--aged-brass); }
+        .text-navy { color: var(--navy); }
+        .text-stone { color: var(--stone); }
+        
+        .mb-0 { margin-bottom: 0; }
+        .mt-0 { margin-top: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <div class="cover">
+        <div class="cover-logo">
+            <span>AG</span>
+        </div>
+        <div class="cover-title">Brand Identity Standards</div>
+        <div class="cover-subtitle">Strategic Growth Advisory</div>
+        <div class="cover-line"></div>
+        <div class="cover-meta">
+            Board Presentation Document &nbsp;•&nbsp; Version 2.0 &nbsp;•&nbsp; February 2026
+        </div>
+    </div>
+
+    <!-- Page 1: Executive Summary -->
+    <div class="page">
+        <div class="page-header">
+            <div class="page-logo">
+                <div class="page-logo-mark">
+                    <span>AG</span>
+                </div>
+                <div class="page-logo-text">Avron Global</div>
+            </div>
+            <div class="page-number">01</div>
+        </div>
+        
+        <h1>Executive Summary</h1>
+        
+        <p class="lead">
+            Avron Global requires a brand identity system that signals sovereign-level credibility without claiming regulated status. The system must function across three imperatives: regulatory safety, institutional authority, and GCC-London credibility.
+        </p>
+        
+        <h2>Strategic Imperatives</h2>
+        
+        <table>
+            <tr>
+                <th>Imperative</th>
+                <th>Requirement</th>
+                <th>Execution</th>
+            </tr>
+            <tr>
+                <td><strong>Regulatory Safety</strong></td>
+                <td>No implied investment advisory or brokerage</td>
+                <td>Language audited; disclaimers prominent</td>
+            </tr>
+            <tr>
+                <td><strong>Institutional Authority</strong></td>
+                <td>Comparable to KKR, Carlyle, Blackstone</td>
+                <td>Navy dominance, classical typography, restraint</td>
+            </tr>
+            <tr>
+                <td><strong>GCC-London Credibility</strong></td>
+                <td>Heritage and global reach simultaneously</td>
+                <td>Brass accent, Bahrain reference, City of London registration</td>
+            </tr>
+        </table>
+        
+        <h2>Competitive Position</h2>
+        
+        <p>We occupy the space between <strong>management consultancy</strong> (McKinsey, Bain) and <strong>investment banking</strong> (Lazard, Evercore)—closer to the former in structure, closer to the latter in outcome.</p>
+        
+        <div class="highlight-box">
+            <h3>Brand Promise</h3>
+            <p>"We serve few, deeply." Selective engagement. Multi-year partnerships. Senior-partner attention.</p>
+        </div>
+        
+        <div class="document-footer">
+            <div>Avron Global Ltd. &nbsp;•&nbsp; Registered in England and Wales</div>
+            <div>Confidential &nbsp;•&nbsp; Board Use Only</div>
+        </div>
+    </div>
+
+    <!-- Page 2: Visual Identity -->
+    <div class="page">
+        <div class="page-header">
+            <div class="page-logo">
+                <div class="page-logo-mark">
+                    <span>AG</span>
+                </div>
+                <div class="page-logo-text">Avron Global</div>
+            </div>
+            <div class="page-number">02</div>
+        </div>
+        
+        <h1>Visual Identity System</h1>
+        
+        <h2>Color Palette</h2>
+        
+        <div class="color-grid">
+            <div class="color-swatch">
+                <div class="color-block" style="background: #001D3D;"></div>
+                <div class="color-name">Navy</div>
+                <div class="color-hex">#001D3D</div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-block" style="background: #B8956B;"></div>
+                <div class="color-name">Brass</div>
+                <div class="color-hex">#B8956B</div>
+            </div>
+            <div class="color-swatch">
+                <div class="color-block" style="background: #F5F1EB;"></div>
+                <div class="color-name">Sand</div>
+                <div class="color-hex">#F5F1EB</div>
+            </div>
+        </div>
+        
+        <h3>Color Psychology</h3>
+        <ul>
+            <li><strong>Navy:</strong> Trust, permanence, institutional memory. Used by KKR, McKinsey.</li>
+            <li><strong>Brass:</strong> Warmth, heritage, discretion. Distinctive—competitors use gold (ostentatious).</li>
+            <li><strong>Sand:</strong> Elegance, restraint, readability. Luxury hospitality parallel (Aman, Four Seasons).</li>
+        </ul>
+        
+        <h2>Typography</h2>
+        
+        <table>
+            <tr>
+                <th>Typeface</th>
+                <th>Character</th>
+                <th>Use</th>
+            </tr>
+            <tr>
+                <td><strong>Cinzel</strong></td>
+                <td>Roman inscription, timeless, architectural</td>
+                <td>Logo, headlines, brand name</td>
+            </tr>
+            <tr>
+                <td><strong>Crimson Text</strong></td>
+                <td>Editorial, scholarly, readable</td>
+                <td>Body text, long-form content</td>
+            </tr>
+            <tr>
+                <td><strong>Inter</strong></td>
+                <td>Modern, functional, digital-native</td>
+                <td>UI, navigation, captions</td>
+            </tr>
+        </table>
+        
+        <h2>Logo: AG Monogram</h2>
+        
+        <div class="logo-spec">
+            <div class="logo-spec-visual">
+                <div style="background: #001D3D; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; border-left: 9px solid #B8956B;">
+                    <span style="font-family: 'Cinzel', serif; font-size: 38px; font-weight: 700; color: #F5F1EB; letter-spacing: 0.12em;">AG</span>
+                </div>
+            </div>
+            <div class="logo-spec-details">
+                <div class="spec-row">
+                    <span class="spec-label">Field</span>
+                    <span class="spec-value">Navy #001D3D</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Border</span>
+                    <span class="spec-value">Brass #B8956B (8% width)</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Typography</span>
+                    <span class="spec-value">Cinzel Bold, Sand #F5F1EB</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Proportion</span>
+                    <span class="spec-value">Square (1:1)</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Clear Space</span>
+                    <span class="spec-value">12px minimum (at 100px)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="document-footer">
+            <div>Avron Global Ltd. &nbsp;•&nbsp; Registered in England and Wales</div>
+            <div>Confidential &nbsp;•&nbsp; Board Use Only</div>
+        </div>
+    </div>
+
+    <!-- Page 3: Applications -->
+    <div class="page">
+        <div class="page-header">
+            <div class="page-logo">
+                <div class="page-logo-mark">
+                    <span>AG</span>
+                </div>
+                <div class="page-logo-text">Avron Global</div>
+            </div>
+            <div class="page-number">03</div>
+        </div>
+        
+        <h1>Digital Applications</h1>
+        
+        <h2>Website: avronglobal.com</h2>
+        
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Specification</th>
+            </tr>
+            <tr>
+                <td>Navigation</td>
+                <td>Fixed, navy background, logo left, links right</td>
+            </tr>
+            <tr>
+                <td>Hero</td>
+                <td>"Capital for Ambition. Strategy for Scale."</td>
+            </tr>
+            <tr>
+                <td>Typography</td>
+                <td>Cinzel headlines, Crimson Text body, Inter UI</td>
+            </tr>
+            <tr>
+                <td>Interactions</td>
+                <td>Brass hover states, 0.3s ease, no "velocity" animations</td>
+            </tr>
+        </table>
+        
+        <h2>Email Signature</h2>
+        
+        <div class="two-col">
+            <div>
+                <h3>Structure</h3>
+                <ul>
+                    <li>AG Logo 44px</li>
+                    <li>Name (Inter 11pt Bold, Navy)</li>
+                    <li>Title (Inter 11pt, Grey)</li>
+                    <li>Company (Cinzel 13pt Bold, Navy)</li>
+                    <li>Tagline (Inter 10pt, Brass, all caps)</li>
+                    <li>Contact (Inter 12pt, Grey)</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Critical Requirements</h3>
+                <ul>
+                    <li>HTML table-based (not CSS)</li>
+                    <li>Embedded or hosted PNG logo</li>
+                    <li>Fallback fonts specified</li>
+                    <li>Maximum width 600px</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2>LinkedIn</h2>
+        
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Specification</th>
+            </tr>
+            <tr>
+                <td>Profile Image</td>
+                <td>400×400px AG logo (navy field)</td>
+            </tr>
+            <tr>
+                <td>Cover Image</td>
+                <td>1584×396px brass gradient, navy overlay</td>
+            </tr>
+            <tr>
+                <td>Tagline</td>
+                <td>"Strategic Growth Advisory"</td>
+            </tr>
+            <tr>
+                <td>About</td>
+                <td>Institutional positioning, no regulated terms</td>
+            </tr>
+        </table>
+        
+        <h2>Microsoft Word Template</h2>
+        
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Specification</th>
+            </tr>
+            <tr>
+                <td>Margins</td>
+                <td>1" (25.4mm) all sides</td>
+            </tr>
+            <tr>
+                <td>Header Logo</td>
+                <td>100×100px PNG, top left</td>
+            </tr>
+            <tr>
+                <td>Company Name</td>
+                <td>Georgia 22pt Bold, Navy</td>
+            </tr>
+            <tr>
+                <td>Body</td>
+                <td>Georgia 11pt, 1.5 line spacing</td>
+            </tr>
+            <tr>
+                <td>Footer</td>
+                <td>32×32px logo, 9pt text, sand line</td>
+            </tr>
+        </table>
+        
+        <div class="document-footer">
+            <div>Avron Global Ltd. &nbsp;•&nbsp; Registered in England and Wales</div>
+            <div>Confidential &nbsp;•&nbsp; Board Use Only</div>
+        </div>
+    </div>
+
+    <!-- Page 4: Regulatory & Implementation -->
+    <div class="page">
+        <div class="page-header">
+            <div class="page-logo">
+                <div class="page-logo-mark">
+                    <span>AG</span>
+                </div>
+                <div class="page-logo-text">Avron Global</div>
+            </div>
+            <div class="page-number">04</div>
+        </div>
+        
+        <h1>Regulatory Compliance & Implementation</h1>
+        
+        <h2>Prohibited Language</h2>
+        
+        <table>
+            <tr>
+                <th>Never Use</th>
+                <th>Replacement</th>
+            </tr>
+            <tr>
+                <td>"Investment advisor"</td>
+                <td>"Strategic advisor"</td>
+            </tr>
+            <tr>
+                <td>"Wealth management"</td>
+                <td>"Strategic growth advisory"</td>
+            </tr>
+            <tr>
+                <td>"Capital raising" (alone)</td>
+                <td>"Advisory on capital formation"</td>
+            </tr>
+            <tr>
+                <td>"Success fee" (alone)</td>
+                <td>"Engagement fee structure"</td>
+            </tr>
+            <tr>
+                <td>"Proprietary deals"</td>
+                <td>"Sourced opportunities"</td>
+            </tr>
+        </table>
+        
+        <h2>Required Qualifying Language</h2>
+        
+        <div class="highlight-box">
+            <h3>First Contact</h3>
+            <p>"We do not manage capital. We do not execute transactions. We advise on the architecture of growth."</p>
+        </div>
+        
+        <h2>Implementation Roadmap</h2>
+        
+        <table>
+            <tr>
+                <th>Phase</th>
+                <th>Timeline</th>
+                <th>Key Deliverables</th>
+            </tr>
+            <tr>
+                <td><strong>Foundation</strong></td>
+                <td>Weeks 1-2</td>
+                <td>Website, email signatures, Word template</td>
+            </tr>
+            <tr>
+                <td><strong>Collateral</strong></td>
+                <td>Weeks 3-4</td>
+                <td>PowerPoint, business cards, letterhead</td>
+            </tr>
+            <tr>
+                <td><strong>Integration</strong></td>
+                <td>Weeks 5-6</td>
+                <td>Pitch deck, proposal templates, training</td>
+            </tr>
+            <tr>
+                <td><strong>Governance</strong></td>
+                <td>Ongoing</td>
+                <td>Quarterly audits, regulatory updates</td>
+            </tr>
+        </table>
+        
+        <h2>Governance</h2>
+        
+        <div class="two-col">
+            <div>
+                <h3>Brand Custodian</h3>
+                <p><strong>Head of Marketing</strong> responsible for:</p>
+                <ul>
+                    <li>Maintaining brand standards</li>
+                    <li>Approving external communications</li>
+                    <li>Ensuring regulatory compliance</li>
+                    <li>Training team on brand voice</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Board Review</h3>
+                <p>Quarterly assessment of:</p>
+                <ul>
+                    <li>Brand consistency across touchpoints</li>
+                    <li>Competitive positioning</li>
+                    <li>Regulatory environment changes</li>
+                    <li>Refinement opportunities</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="document-footer">
+            <div>Avron Global Ltd. &nbsp;•&nbsp; Registered in England and Wales</div>
+            <div>Confidential &nbsp;•&nbsp; Board Use Only</div>
+        </div>
+    </div>
+
+</body>
+</html>
