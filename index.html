@@ -27,25 +27,20 @@
             --brass-light: #C4A77D;
             --cream: #FAF8F5;
             
-            --font-display: 'Crimson Text', Georgia, serif;
+            /* v3.1 Typography Matrix */
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Crimson Text', Georgia, serif;
             --font-ui: 'Inter', Arial, sans-serif;
             
             --transition-slow: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-medium: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         body {
-            font-family: var(--font-display);
+            font-family: var(--font-body);
             color: var(--stone);
             background-color: var(--navy);
             line-height: 1.7;
@@ -60,121 +55,321 @@
             padding: 0 60px;
         }
         
-        /* TYPOGRAPHY HIERARCHY */
-        h1 {
+        /* ============================================================
+           TYPOGRAPHY HIERARCHY — v3.1 Compliant
+           Display: Cinzel | Body: Crimson Text | UI: Inter
+           ============================================================ */
+        h1, h2, h3 {
             font-family: var(--font-display);
-            font-size: 64px;
-            line-height: 1.1;
-            color: var(--stone);
-            margin-bottom: 24px;
             font-weight: 600;
             letter-spacing: -0.02em;
         }
+        h1 { font-size: 64px; line-height: 1.1; color: var(--stone); margin-bottom: 24px; }
+        h2 { font-size: 52px; line-height: 1.15; margin-bottom: 24px; color: var(--navy); }
+        h3 { font-size: 28px; line-height: 1.3; margin-bottom: 16px; color: var(--navy); }
         
-        h2 {
-            font-family: var(--font-display);
-            font-size: 52px;
-            line-height: 1.15;
-            margin-bottom: 24px;
-            color: var(--navy);
-            font-weight: 400;
-            letter-spacing: -0.02em;
-        }
-        
-        h3 {
-            font-family: var(--font-display);
-            font-size: 28px;
-            line-height: 1.3;
-            margin-bottom: 16px;
-            color: var(--navy);
-            font-weight: 400;
-        }
-        
-        p {
-            font-family: var(--font-display);
+        p, .lead {
+            font-family: var(--font-body);
             font-size: 19px;
             line-height: 1.7;
-            color: var(--sand);
-            margin-bottom: 20px;
             font-weight: 400;
             max-width: 65ch;
+            margin-bottom: 20px;
         }
-        
-        .lead {
-            font-size: 22px;
-            line-height: 1.6;
-            color: var(--stone);
-            font-weight: 400;
-            opacity: 0.9;
-        }
+        p { color: var(--sand); }
+        .lead { font-size: 22px; line-height: 1.6; color: var(--stone); opacity: 0.9; }
         
         .brass-line {
-            width: 80px;
-            height: 2px;
+            width: 80px; height: 2px;
             background: linear-gradient(90deg, var(--aged-brass), var(--brass-light));
             margin: 32px 0;
             transition: width var(--transition-slow);
         }
+        .brass-line.long { width: 120px; }
         
-        .brass-line.long {
-            width: 120px;
-        }
-        
-        /* LOGO - Crimson Text (sophisticated, no caps) */
-        .logo {
-            font-family: 'Cinzel', Georgia, serif;
-            font-size: 22px;
-            letter-spacing: 2px;
-            font-weight: 600;
-            text-transform: none;
-            color: var(--stone);
-            text-decoration: none;
-            position: relative;
-        }
-        
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--aged-brass);
-            transition: width 0.3s ease;
-        }
-        
-        .logo:hover::after {
-            width: 100%;
-        }
-        
-        /* NAVIGATION */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 32px 60px;
-            z-index: 1000;
+        /* ============================================================
+           NAV LOGO (compact — 44px)
+           ============================================================ */
+        .logo-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        .logo-mark {
+            width: 44px; height: 44px;
+            background-color: var(--navy);
+            border-left: 4px solid var(--aged-brass);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .logo-mark span {
+            font-family: var(--font-display);
+            font-size: 18px; font-weight: 700;
+            color: var(--stone);
+            letter-spacing: 0.12em;
+            line-height: 1;
+        }
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 20px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: var(--stone);
+        }
+        
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 32px 60px; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
             transition: all var(--transition-medium);
             background: linear-gradient(to bottom, rgba(0,29,61,0.9), transparent);
         }
-        
         nav.scrolled {
-            background: rgba(0,29,61,0.95);
+            background: rgba(0,29,61,0.98);
             backdrop-filter: blur(10px);
             padding: 20px 60px;
             border-bottom: 1px solid rgba(184,149,107,0.2);
         }
+        .nav-links { display: flex; gap: 48px; }
+        .nav-links a {
+            color: var(--sand); text-decoration: none;
+            font-family: var(--font-ui); font-size: 12px;
+            text-transform: uppercase; letter-spacing: 2px; font-weight: 500;
+            position: relative; transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--aged-brass); }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 1px; background-color: var(--aged-brass);
+            transition: width var(--transition-medium);
+        }
+        .nav-links a:hover::after { width: 100%; }
         
-        .nav-links {
-            display: flex;
-            gap: 48px;
+        /* ============================================================
+           HERO
+           ============================================================ */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            position: relative; overflow: hidden; padding: 100px 60px;
+            background-color: var(--navy);
+            background-image: url('assets/images/hero-bg.jpg');
+            background-size: cover; background-position: center;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, rgba(0,29,61,0.95) 0%, rgba(0,29,61,0.8) 50%, rgba(0,29,61,0.6) 100%);
+            z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 750px; padding: 0; }
+        .hero-label {
+            font-family: var(--font-ui); font-size: 11px; text-transform: uppercase;
+            letter-spacing: 3px; color: var(--aged-brass); margin-bottom: 24px; font-weight: 600;
         }
         
-        .nav-links a {
+        /* ============================================================
+           SECTIONS
+           ============================================================ */
+        section { padding: 100px 0; position: relative; }
+        section.light { background-color: var(--stone); }
+        section.light h2, section.light h3 { color: var(--navy); }
+        section.light p { color: var(--charcoal); }
+        section.light .lead { color: var(--charcoal); }
+        section.light .brass-line { background: linear-gradient(90deg, var(--navy), var(--aged-brass)); }
+        
+        #about .asymmetric-grid.reverse {
+            display: grid; grid-template-columns: 40% 60%; gap: 60px; align-items: start;
+        }
+        
+        .dark-section-2026 {
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative; padding: 120px 0;
+        }
+        .dark-section-2026::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(184,149,107,0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(139,154,125,0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .asymmetric-grid { display: grid; grid-template-columns: 55% 45%; gap: 50px; align-items: start; }
+        .section-header-alt { margin-bottom: 60px; max-width: 70%; }
+        
+        /* ============================================================
+           SERVICES — Accordion with Touch Support
+           ============================================================ */
+        .services-container { max-width: 900px; margin: 0 auto; }
+        .service-item-2026 {
+            border-bottom: 1px solid rgba(0,29,61,0.1); padding: 40px 0;
+            cursor: pointer; transition: all var(--transition-medium);
+        }
+        .service-item-2026:hover, .service-item-2026.active {
+            padding-left: 20px; border-left: 2px solid var(--deep-brass);
+        }
+        .service-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+        .service-title {
+            font-family: var(--font-display); font-size: 32px; color: var(--navy);
+            margin: 0; font-weight: 600; transition: color 0.3s ease;
+        }
+        .service-item-2026:hover .service-title, .service-item-2026.active .service-title { color: var(--deep-brass); }
+        .service-number {
+            font-family: var(--font-ui); font-size: 12px; color: var(--deep-brass);
+            letter-spacing: 2px; font-weight: 600;
+        }
+        .service-desc {
+            max-height: 0; overflow: hidden;
+            transition: max-height var(--transition-slow), opacity var(--transition-medium);
+            opacity: 0;
+        }
+        .service-item-2026:hover .service-desc, .service-item-2026.active .service-desc {
+            max-height: 300px; opacity: 1;
+        }
+        .service-desc p {
+            font-family: var(--font-body); font-size: 17px; color: var(--charcoal);
+            max-width: 80%; margin-top: 16px;
+        }
+        
+        /* ============================================================
+           LEADERSHIP
+           ============================================================ */
+        .leadership-grid-2026 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 80px; }
+        .leader-card-2026 {
+            background: var(--cream); padding: 48px 40px;
+            border: 1px solid rgba(0,29,61,0.08); position: relative; overflow: hidden;
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+        }
+        .leader-card-2026::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--aged-brass), transparent);
+            transform: scaleX(0); transform-origin: left; transition: transform var(--transition-medium);
+        }
+        .leader-card-2026:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .leader-card-2026:hover::before { transform: scaleX(1); }
+        .leader-card-2026 h3 { font-family: var(--font-display); font-size: 28px; margin-bottom: 8px; color: var(--navy); text-align: center; }
+        .leader-title-2026 {
+            font-family: var(--font-ui); font-size: 11px; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--deep-brass); margin-bottom: 24px; font-weight: 600; text-align: center;
+        }
+        .leader-card-2026 p {
+            font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--charcoal); text-align: center;
+        }
+        /* Clean object-fit — no transform hack */
+        .partner-photo {
+            width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--aged-brass);
+            overflow: hidden; margin: 0 auto 24px; position: relative; box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .partner-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+        
+        /* ============================================================
+           INTEGRITY
+           ============================================================ */
+        #integrity { text-align: center; padding: 100px 0; }
+        #integrity .container { max-width: 850px; margin: 0 auto; }
+        #integrity h2 { color: var(--stone); font-size: 56px; line-height: 1.1; margin-bottom: 16px; }
+        #integrity .brass-line { margin: 0 auto 32px; }
+        #integrity .lead { color: var(--sand); margin-bottom: 40px; }
+        #integrity p { max-width: 800px; margin: 0 auto 20px; text-align: center; color: var(--sand); }
+        
+        /* ============================================================
+           CONTACT
+           ============================================================ */
+        .contact-2026 {
+            background-color: var(--charcoal); text-align: center;
+            position: relative; overflow: hidden; padding: 100px 0;
+        }
+        .contact-2026::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--aged-brass), transparent);
+        }
+        .contact-2026 h2 { color: var(--stone); }
+        .contact-2026 p { color: var(--sand); max-width: 600px; margin: 0 auto 48px; }
+        
+        /* ============================================================
+           FOOTER — Mega-Fund Style (Blackstone/KKR model)
+           ============================================================ */
+        footer {
+            background-color: var(--navy);
+            padding: 80px 0 40px;
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--aged-brass), transparent);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: start;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(184,149,107,0.15);
+        }
+        
+        /* LEFT: Enlarged brand anchor */
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+        }
+        /* Enlarged logo mark — 72px, canonical --navy field */
+        .footer-logo-mark {
+            width: 72px; height: 72px;
+            background-color: var(--navy);
+            border-left: 6px solid var(--aged-brass);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .footer-logo-mark span {
+            font-family: var(--font-display);
+            font-size: 28px; font-weight: 700;
+            color: var(--stone);
+            letter-spacing: 0.12em;
+            line-height: 1;
+        }
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .footer-firm-name {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--stone);
+            letter-spacing: 0.04em;
+            line-height: 1.1;
+        }
+        .footer-tagline {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--deep-brass);
+            font-weight: 500;
+        }
+        .footer-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             color: var(--sand);
             text-decoration: none;
             font-family: var(--font-ui);
@@ -182,516 +377,117 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 500;
-            position: relative;
             transition: color 0.3s ease;
+            margin-top: 8px;
+            width: fit-content;
         }
+        .footer-linkedin:hover { color: var(--aged-brass); }
+        .footer-linkedin svg { transition: transform 0.3s ease; }
+        .footer-linkedin:hover svg { transform: translateY(-2px); }
         
-        .nav-links a:hover {
-            color: var(--aged-brass);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--aged-brass);
-            transition: width var(--transition-medium);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* HERO - Full width image */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding: 100px 60px;
-            background-image: url('assets/images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, 
-                rgba(0,29,61,0.95) 0%, 
-                rgba(0,29,61,0.8) 50%,
-                rgba(0,29,61,0.6) 100%);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 650px;
-            padding: 0;
-        }
-        
-        .hero-label {
-            font-family: var(--font-ui);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--aged-brass);
-            margin-bottom: 24px;
-            font-weight: 600;
-        }
-        
-        /* SECTIONS - Reduced padding */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        section.light {
-            background-color: var(--stone);
-        }
-        
-        section.light h2,
-        section.light h3 {
-            color: var(--navy);
-        }
-        
-        section.light p {
-            color: var(--charcoal);
-        }
-        
-        section.light .brass-line {
-            background: linear-gradient(90deg, var(--navy), var(--aged-brass));
-        }
-        
-        /* ABOUT - Age of Velocity (tighter grid) */
-        #about .container {
-            max-width: 1400px;
-        }
-        
-        #about .asymmetric-grid.reverse {
+        /* RIGHT: Link columns */
+        .footer-links-grid {
             display: grid;
-            grid-template-columns: 40% 60%;
-            gap: 60px;
-            align-items: start;
-        }
-        
-        #about h2 {
-            font-size: 52px;
-            line-height: 1.1;
-        }
-        
-        /* PHILOSOPHY - Model section (keep generous) */
-        .dark-section-2026 {
-            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
-            position: relative;
-            padding: 120px 0;
-        }
-        
-        .dark-section-2026::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(184,149,107,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(139,154,125,0.05) 0%, transparent 40%);
-            pointer-events: none;
-        }
-        
-        .asymmetric-grid {
-            display: grid;
-            grid-template-columns: 55% 45%;
-            gap: 50px;
-            align-items: start;
-        }
-        
-        .section-header-alt {
-            margin-bottom: 60px;
-            max-width: 70%;
-        }
-        
-        /* SERVICES - Accordion */
-        .services-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .service-item-2026 {
-            border-bottom: 1px solid rgba(0,29,61,0.1);
-            padding: 40px 0;
-            cursor: pointer;
-            transition: all var(--transition-medium);
-        }
-        
-        .service-item-2026:hover {
-            padding-left: 20px;
-            border-left: 2px solid var(--deep-brass);
-        }
-        
-        .service-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 16px;
-        }
-        
-        .service-title {
-            font-family: var(--font-display);
-            font-size: 32px;
-            color: var(--navy);
-            margin: 0;
-            font-weight: 400;
-            transition: color 0.3s ease;
-        }
-        
-        .service-item-2026:hover .service-title {
-            color: var(--deep-brass);
-        }
-        
-        .service-number {
-            font-family: var(--font-ui);
-            font-size: 12px;
-            color: var(--deep-brass);
-            letter-spacing: 2px;
-        }
-        
-        .service-desc {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height var(--transition-slow), opacity var(--transition-medium);
-            opacity: 0;
-        }
-        
-        .service-item-2026:hover .service-desc {
-            max-height: 300px;
-            opacity: 1;
-        }
-        
-        .service-desc p {
-            font-size: 17px;
-            color: var(--charcoal);
-            max-width: 80%;
-            margin-top: 16px;
-        }
-        
-        /* LEADERSHIP - Team section */
-        .leadership-grid-2026 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
-            margin-top: 80px;
         }
-        
-        .leader-card-2026 {
-            background: var(--cream);
-            padding: 48px 40px;
-            border: 1px solid rgba(0,29,61,0.08);
-            position: relative;
-            overflow: hidden;
-            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-        }
-        
-        .leader-card-2026::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--aged-brass), transparent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform var(--transition-medium);
-        }
-        
-        .leader-card-2026:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .leader-card-2026:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .leader-card-2026 h3 {
-            font-family: var(--font-display);
-            font-size: 28px;
-            margin-bottom: 8px;
-            color: var(--navy);
-            text-align: center;
-        }
-        
-        .leader-title-2026 {
-            font-family: var(--font-ui);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--deep-brass);
-            margin-bottom: 24px;
-            font-weight: 600;
-            text-align: center;
-        }
-        
-        .leader-card-2026 p {
-            font-size: 16px;
-            line-height: 1.7;
-            color: var(--charcoal);
-            text-align: center;
-        }
-        
-        /* PARTNER PHOTOS - Fixed zoom */
-        .partner-photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 4px solid var(--aged-brass);
-            overflow: hidden;
-            margin: 0 auto 24px;
-            position: relative;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-        
-        .partner-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 50%;
-            transform: scale(1.3) translateY(10%);
-            display: block;
-            transition: none; /* No hover animation */
-        }
-        
-        /* HERITAGE - Centered like Philosophy */
-        #integrity {
-            text-align: center;
-            padding: 100px 0;
-        }
-        
-        #integrity .container {
-            max-width: 850px;
-            margin: 0 auto;
-        }
-        
-        #integrity h2 {
-            color: var(--stone);
-            font-size: 56px;
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-        
-        #integrity .brass-line {
-            margin: 0 auto 32px;
-        }
-        
-        #integrity .lead {
-            color: var(--sand);
-            margin-bottom: 40px;
-        }
-        
-        #integrity p {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            text-align: center;
-            color: var(--sand);
-        }
-        
-        #integrity p:last-of-type {
-            margin-bottom: 0;
-        }
-        
-        /* CONTACT */
-        .contact-2026 {
-            background-color: var(--charcoal);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            padding: 100px 0;
-        }
-        
-        .contact-2026::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--aged-brass), transparent);
-        }
-        
-        .contact-2026 h2 {
-            color: var(--stone);
-        }
-        
-        .contact-2026 p {
-            color: var(--sand);
-            max-width: 600px;
-            margin: 0 auto 48px;
-        }
-        
-        .contact-info-2026 {
-            margin-top: 64px;
-            padding-top: 48px;
-            border-top: 1px solid rgba(184,149,107,0.2);
-        }
-        
-        .contact-info-2026 p {
-            font-family: var(--font-display);
-            font-size: 32px;
-            color: var(--stone);
-            margin-bottom: 16px;
-        }
-        
-        .contact-detail {
-            font-family: var(--font-ui) !important;
-            font-size: 14px !important;
-            color: var(--brass-light) !important;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-        
-        /* FOOTER */
-        footer {
-            background-color: var(--navy);
-            padding: 48px 0;
-            border-top: 1px solid rgba(184,149,107,0.15);
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .footer-link-column h4 {
             font-family: var(--font-ui);
             font-size: 12px;
-            color: var(--sand);
-            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--aged-brass);
+            font-weight: 600;
+            margin-bottom: 20px;
         }
-        .footer-links {
+        .footer-link-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             display: flex;
-            align-items: center;
-            gap: 32px;
+            flex-direction: column;
+            gap: 12px;
         }
-        
-        .footer-links a {
+        .footer-link-column a {
             color: var(--sand);
             text-decoration: none;
-            margin-left: 32px;
+            font-family: var(--font-ui);
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
             transition: color 0.3s ease;
-            position: relative;
+            display: inline-block;
         }
+        .footer-link-column a:hover { color: var(--aged-brass); }
         
-        .footer-links a:not(.linkedin-footer):hover {
-            color: var(--aged-brass);
+        /* BOTTOM: Legal disclaimer block */
+        .footer-legal {
+            padding-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
-        
-        .linkedin-footer {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        .footer-disclaimer {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            line-height: 1.7;
             color: var(--sand);
-            transition: all 0.3s ease;
-            opacity: 0.8;
-            margin-left: 8px;
+            max-width: 1100px;
         }
-
-        .linkedin-footer:hover {
-            color: var(--aged-brass);
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-
-        .linkedin-footer svg {
-            display: block;
+        .footer-copyright {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            color: var(--sand);
+            letter-spacing: 0.5px;
+            opacity: 0.7;
         }
         
-        /* REVEAL ANIMATION */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
+        /* ============================================================
+           REVEAL ANIMATION
+           ============================================================ */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* MOBILE */
+        /* ============================================================
+           MOBILE RESPONSIVE
+           ============================================================ */
         @media (max-width: 1024px) {
-            .hero {
-                padding: 80px 24px;
-            }
+            .hero { padding: 80px 24px; }
+            h1 { font-size: 48px; }
+            h2 { font-size: 40px; }
+            #about .asymmetric-grid.reverse, .asymmetric-grid { grid-template-columns: 1fr; gap: 40px; }
+            .leadership-grid-2026 { grid-template-columns: 1fr; }
+            .container { padding: 0 24px; }
+            nav { padding: 24px; }
+            .nav-links { display: none; }
+            .section-header-alt { max-width: 100%; }
+            .service-desc p { max-width: 100%; }
+            .logo-text { display: none; }
             
-            h1 {
-                font-size: 48px;
-            }
-            
-            h2 {
-                font-size: 40px;
-            }
-            
-            #about .asymmetric-grid.reverse {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .asymmetric-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .leadership-grid-2026 {
-                grid-template-columns: 1fr;
-            }
-            
-            .container {
-                padding: 0 24px;
-            }
-            
-            nav {
-                padding: 24px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 24px;
-                text-align: center;
-            }
-            
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 24px;
-            }
-    
-            .linkedin-footer {
-                margin-left: 0;
-            }
-
-            .section-header-alt {
-                max-width: 100%;
-            }
+            footer { padding: 60px 0 32px; }
+            .footer-container { padding: 0 24px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 48px; }
+            .footer-logo-mark { width: 60px; height: 60px; }
+            .footer-logo-mark span { font-size: 24px; }
+            .footer-firm-name { font-size: 22px; }
+            .footer-links-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-links-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ============================================================
+         NAVIGATION
+         ============================================================ -->
     <nav id="navbar">
-        <a href="#" class="logo">Avron Global</a>
+        <a href="#" class="logo-container">
+            <div class="logo-mark"><span>AG</span></div>
+            <div class="logo-text">Avron Global</div>
+        </a>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#services">Services</a>
@@ -700,16 +496,22 @@
         </div>
     </nav>
 
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-label">Strategic Growth Advisory</div>
             <h1>Capital for Ambition.<br>Strategy for Scale.</h1>
             <div class="brass-line"></div>
-            <p class="lead">The architectural bridge between visionary leadership and sovereign capital.</p>
-            <p style="font-size: 16px; opacity: 0.7; margin-top: 48px; font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 1px;">London &nbsp;•&nbsp; GCC &nbsp;•&nbsp; Global Network</p>
+            <p class="lead">Strategic counsel for institutions and families governing substantial private capital.</p>
+            <p style="font-size: 16px; opacity: 0.7; margin-top: 48px; font-family: var(--font-ui); text-transform: uppercase; letter-spacing: 1px; color: var(--sand);">London &nbsp;•&nbsp; GCC &nbsp;•&nbsp; Global Network</p>
         </div>
     </section>
 
+    <!-- ============================================================
+         ABOUT — Judgment Across Cycles
+         ============================================================ -->
     <section class="light" id="about">
         <div class="container">
             <div class="asymmetric-grid reverse reveal">
@@ -720,12 +522,15 @@
                 <div>
                     <p class="lead">An extension of the boardroom—providing analytical rigour and network access cultivated through decades of practice.</p>
                     <p>Registered in The City of London. Heritage in the Kingdom of Bahrain.<br>Counsel to family offices, sovereign entities, and institutional stewards.</p>
-                    <p style="font-size: 16px; opacity: 0.7; margin-top: 32px; font-style: italic; border-left: 2px solid var(--aged-brass); padding-left: 20px;">"We serve few, deeply."</p>
+                    <p style="font-size: 16px; opacity: 0.7; margin-top: 32px; font-style: italic; border-left: 2px solid var(--aged-brass); padding-left: 20px; color: var(--charcoal);">"We serve few, deeply."</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ============================================================
+         PHILOSOPHY
+         ============================================================ -->
     <section class="dark-section-2026">
         <div class="container">
             <div class="section-header-alt reveal">
@@ -733,7 +538,6 @@
                 <h2 style="color: var(--stone);">Our Philosophy</h2>
                 <p class="lead" style="color: var(--sand);">Aligned Interests. Asymmetric Insight. Discretion.</p>
             </div>
-            
             <div class="asymmetric-grid reveal">
                 <div>
                     <p>We embed within family councils and sovereign investment committees. Our methodologies were forged through economic cycles, regulatory shifts, and generational transitions. Our value manifests in stewardship—preserving capital integrity and enabling strategic expansion across decades.</p>
@@ -745,58 +549,60 @@
         </div>
     </section>
 
+    <!-- ============================================================
+         SERVICES — Advisory Capabilities
+         ============================================================ -->
     <section class="light" id="services">
         <div class="container">
             <div class="section-header-alt reveal">
                 <div class="brass-line"></div>
                 <h2>Advisory Capabilities</h2>
-                <p class="lead">Strategic advisory for visionary enterprises navigating complex markets.</p>
+                <p class="lead">Strategic advisory for enterprises navigating complex, cross-border markets.</p>
             </div>
-        
             <div class="services-container reveal">
-                <div class="service-item-2026">
+                <div class="service-item-2026" tabindex="0">
                     <div class="service-header">
-                        <h3 class="service-title">Cross-Border Capital Formation</h3>
+                        <h3 class="service-title">Cross-Border Capital Architecture</h3>
                         <span class="service-number">01</span>
                     </div>
                     <div class="service-desc">
-                        <p>Connecting enterprises in bank-constrained markets to institutional capital in developed financial centers. Advisory on private placements, debt facilities, and alternative financing structures where traditional banking limits growth.</p>
+                        <p>Strategic counsel on capital architecture, alternative financing structures, and institutional alignment for enterprises navigating complex, bank-constrained markets.</p>
                     </div>
                 </div>
-            
-                <div class="service-item-2026">
+                <div class="service-item-2026" tabindex="0">
                     <div class="service-header">
                         <h3 class="service-title">Renewable Energy & Infrastructure Finance</h3>
                         <span class="service-number">02</span>
                     </div>
                     <div class="service-desc">
-                        <p>Capital strategy and financing architecture for solar, hydro, and waste management projects. Structuring solutions for development-stage and operational assets across emerging and developed markets.</p>
+                        <p>Capital strategy and financing architecture for solar, hydro, and waste management projects. Advisory on structuring solutions for development-stage and operational assets across emerging and developed markets.</p>
                     </div>
                 </div>
-                
-                <div class="service-item-2026">
+                <div class="service-item-2026" tabindex="0">
                     <div class="service-header">
                         <h3 class="service-title">M&A & Strategic Transactions</h3>
                         <span class="service-number">03</span>
                     </div>
                     <div class="service-desc">
-                        <p>Buy-side and sell-side counsel for mergers, acquisitions, and strategic divestitures. Cross-border regulatory navigation and execution coordination across jurisdictions.</p>
+                        <p>Buy-side and sell-side strategic counsel for mergers, acquisitions, and divestitures. Cross-border regulatory navigation and transaction support across multiple jurisdictions.</p>
                     </div>
                 </div>
-                
-                <div class="service-item-2026">
+                <div class="service-item-2026" tabindex="0">
                     <div class="service-header">
                         <h3 class="service-title">Capital Markets & Pre-IPO Advisory</h3>
                         <span class="service-number">04</span>
                     </div>
                     <div class="service-desc">
-                        <p>Governance restructuring and preparation for premium exchange listings. Coordination with underwriters across London, NASDAQ, and regional exchanges.</p>
+                        <p>Governance restructuring and strategic preparation for premium exchange listings. Advisory coordination with underwriters across London, NASDAQ, and regional exchanges.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ============================================================
+         LEADERSHIP
+         ============================================================ -->
     <section class="light" id="leadership">
         <div class="container">
             <div class="section-header-alt reveal">
@@ -804,50 +610,52 @@
                 <h2>Leadership</h2>
                 <p class="lead">Decades of experience across strategy, operations, and capital.</p>
             </div>
-            
             <div class="leadership-grid-2026 reveal">
                 <div class="leader-card-2026">
                     <div class="partner-photo">
-                        <img src="assets/images/Jagdish.jpg" alt="Jagdish">
+                        <img src="assets/images/Jagdish.jpg" alt="Jagdish, Managing Partner">
                     </div>
                     <h3>Jagdish</h3>
                     <div class="leader-title-2026">Managing Partner</div>
-                    <p>Originates and leads advisory relationships with visionary founders and family offices across GCC and European markets. Counsels on capital strategy, structure, and financing alternatives. Facilitates direct access to sovereign funds, institutional investors, and private investors through network relationships. Former senior operations leadership within a CBB-regulated fintech platform. Contributed to Bahrain's Economic Vision 2030 digital transformation initiatives alongside the Information & eGovernment Authority.</p>
+                    <p>Originates and leads advisory relationships with institutional principals and family offices across GCC and European markets. Counsels on capital strategy, structure, and financing alternatives. Facilitates direct access to sovereign funds and institutional investors through established network relationships. Former senior operations leadership within a CBB-regulated fintech platform. Contributed to Bahrain's Economic Vision 2030 digital transformation initiatives alongside the Information & eGovernment Authority.</p>
                 </div>
-                
                 <div class="leader-card-2026">
                     <div class="partner-photo">
-                        <img src="assets/images/George.jpg" alt="George">
+                        <img src="assets/images/George.jpg" alt="George, Partner, Strategy & Operations">
                     </div>
                     <h3>George</h3>
                     <div class="leader-title-2026">Partner, Strategy & Operations</div>
                     <p>Former strategic leadership within defense and national security frameworks. Professor of Data Analytics, Artificial Intelligence, and Machine Learning, University of Europe (Potsdam and Berlin campuses). Doctoral candidate in Strategy, with research focus on crisis management and institutional resilience under extreme uncertainty. Leads strategic planning, decision architecture, and organizational design for complex multi-jurisdictional mandates.</p>
                 </div>
-                
                 <div class="leader-card-2026">
                     <div class="partner-photo">
-                        <img src="assets/images/Rakesh.jpg" alt="Rakesh">
+                        <img src="assets/images/Rakesh.jpg" alt="Rakesh, Partner, Capital Markets">
                     </div>
                     <h3>Rakesh</h3>
                     <div class="leader-title-2026">Partner, Capital Markets</div>
-                    <p>Former banker and entrepreneur. Transaction architect with demonstrated track record in capital formation, regulatory navigation, and cross-border deal structuring across GCC markets. Deep expertise in GCC market entry and institutional capital alignment. Leads capital formation strategy and regulatory requirements for complex mandates.</p>
+                    <p>Former banker and entrepreneur. Extensive experience advising on capital formation, regulatory navigation, and cross-border transaction support across GCC markets. Deep expertise in GCC market entry and institutional capital alignment. Leads capital formation strategy and regulatory advisory for complex mandates.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ============================================================
+         INTEGRITY
+         ============================================================ -->
     <section class="dark-section-2026" id="integrity">
         <div class="container">
             <div class="reveal">
                 <div class="brass-line" style="margin: 0 auto 32px;"></div>
                 <h2>Integrity</h2>
                 <p class="lead" style="margin-bottom: 40px;">Depth demands focus.</p>
-                
                 <p>Our partners have counselled capital through successive market cycles, with particular depth in GCC and European jurisdictions. We maintain disciplined capacity, ensuring each mandate receives senior partner attention.</p>                                
             </div>
         </div>
     </section>
 
+    <!-- ============================================================
+         CONTACT
+         ============================================================ -->
     <section class="contact-2026" id="contact">
         <div class="container reveal">
             <div class="brass-line" style="margin: 0 auto 32px;"></div>
@@ -856,42 +664,87 @@
         </div>
     </section>
 
+    <!-- ============================================================
+         FOOTER — Mega-Fund Style
+         ============================================================ -->
     <footer>
-        <div class="container footer-content">
-            <div>© 2026 Avron Global Ltd.</div>
-            <div class="footer-links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-and-conditions.html">Terms & Conditions</a>
-                <a href="disclaimer.html">Disclaimer</a>
-                <a href="https://uk.linkedin.com/company/avronglobal" target="_blank" class="linkedin-footer" aria-label="LinkedIn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
-                    </svg>
-                </a>
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <!-- LEFT: Enlarged brand anchor -->
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo-container">
+                        <div class="footer-logo-mark"><span>AG</span></div>
+                        <div class="footer-logo-text">
+                            <div class="footer-firm-name">Avron Global</div>
+                            <div class="footer-tagline">Strategic Growth Advisory</div>
+                        </div>
+                    </a>
+                    <a href="https://uk.linkedin.com/company/avronglobal" target="_blank" class="footer-linkedin" aria-label="LinkedIn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
+                        </svg>
+                        Follow on LinkedIn
+                    </a>
+                </div>
+                
+                <!-- RIGHT: Link columns -->
+                <div class="footer-links-grid">
+                    <div class="footer-link-column">
+                        <h4>Firm</h4>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#services">Advisory Capabilities</a></li>
+                            <li><a href="#leadership">Leadership</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                            <li><a href="disclaimer.html">Disclaimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- BOTTOM: Legal disclaimer + copyright -->
+            <div class="footer-legal">
+                <div class="footer-disclaimer">
+                    Avron Global Ltd. is registered in England and Wales. Company No. 13625677. Registered Office: Level 17 Dashwood House, Old Broad Street, London, England, EC2M 1QS. 
+                    We provide bespoke strategic advisory services and do not conduct regulated activities under the Financial Services and Markets Act 2000. 
+                    This website and its contents do not constitute an offer of securities, investment advice, or a solicitation to buy or sell any financial instrument in any jurisdiction.
+                </div>
+                <div class="footer-copyright">
+                    © 2026 Avron Global Ltd. All rights reserved.
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) { nav.classList.add('scrolled'); } 
+            else { nav.classList.remove('scrolled'); }
         });
         
+        // Scroll reveal animation
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } });
         }, { threshold: 0.1 });
         reveals.forEach(el => revealObserver.observe(el));
-    </script>
 
+        // Touch-friendly accordion for Services (Mobile & Desktop Click)
+        const serviceItems = document.querySelectorAll('.service-item-2026');
+        serviceItems.forEach(item => {
+            item.addEventListener('click', function() { this.classList.toggle('active'); });
+        });
+    </script>
 </body>
 </html>
