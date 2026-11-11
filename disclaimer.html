@@ -4,41 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disclaimer — Avron Global</title>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- v3.1 Typography Matrix: Cinzel (Display), Crimson Text (Body), Inter (UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicons (matching main site) -->
+    <link rel="icon" type="image/x-icon" href="https://juggysagar.github.io/avronglobal-website/assets/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://juggysagar.github.io/avronglobal-website/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://juggysagar.github.io/avronglobal-website/assets/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://juggysagar.github.io/avronglobal-website/assets/favicons/apple-touch-icon.png">
+    <meta name="theme-color" content="#001D3D">
+    
     <style>
         :root {
             --navy: #001D3D;
+            --navy-light: #0A2942;
             --charcoal: #2C2C2C;
             --stone: #F5F1EB;
             --sand: #E8E0D5;
             --aged-brass: #B8956B;
             --deep-brass: #8A6A42;
             --brass-light: #C4A77D;
-            --font-display: 'Crimson Text', Georgia, serif;
+            --cream: #FAF8F5;
+            
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Crimson Text', Georgia, serif;
             --font-ui: 'Inter', Arial, sans-serif;
+            
+            --transition-medium: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: var(--font-display);
+            font-family: var(--font-body);
             color: var(--charcoal);
             background-color: var(--stone);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             font-weight: 400;
+            font-size: 17px;
         }
 
+        /* ============================================================
+           UNIFIED NAVIGATION (Matches index.html)
+           ============================================================ */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+        .logo-mark {
+            width: 44px; height: 44px;
+            background-color: var(--navy);
+            border-left: 4px solid var(--aged-brass);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .logo-mark span {
+            font-family: var(--font-display);
+            font-size: 18px; font-weight: 700;
+            color: var(--stone);
+            letter-spacing: 0.12em;
+            line-height: 1;
+        }
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 20px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: var(--stone);
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 32px 60px; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all var(--transition-medium);
+            background: rgba(0,29,61,0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(184,149,107,0.2);
+        }
+        .nav-links { display: flex; gap: 48px; }
+        .nav-links a {
+            color: var(--sand); text-decoration: none;
+            font-family: var(--font-ui); font-size: 12px;
+            text-transform: uppercase; letter-spacing: 2px; font-weight: 500;
+            position: relative; transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--aged-brass); }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 1px; background-color: var(--aged-brass);
+            transition: width var(--transition-medium);
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ============================================================
+           MAIN CONTENT CONTAINER
+           ============================================================ */
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 60px 40px;
         }
 
-        h1 {
+        /* TYPOGRAPHY HIERARCHY — v3.1 Compliant */
+        h1, h2 {
             font-family: var(--font-display);
-            font-size: 42px;
+            font-weight: 600;
             color: var(--navy);
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: 42px;
             margin-bottom: 16px;
-            font-weight: 400;
             position: relative;
             padding-bottom: 20px;
         }
@@ -54,33 +139,30 @@
         }
 
         h2 {
-            font-family: var(--font-display);
             font-size: 26px;
-            color: var(--navy);
             margin-top: 48px;
             margin-bottom: 20px;
-            font-weight: 400;
             border-bottom: 1px solid rgba(0,29,61,0.1);
             padding-bottom: 12px;
         }
 
         h3 {
             font-family: var(--font-ui);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: var(--navy);
             margin-top: 32px;
             margin-bottom: 16px;
         }
 
         p, li {
-            font-size: 16px;
+            font-family: var(--font-body);
+            font-size: 17px;
             line-height: 1.8;
             color: var(--charcoal);
             margin-bottom: 16px;
-            font-weight: 400;
         }
 
         ul {
@@ -90,33 +172,6 @@
 
         li {
             margin-bottom: 8px;
-        }
-
-        .warning-box {
-            background-color: var(--navy);
-            color: var(--stone);
-            padding: 32px;
-            margin: 32px 0;
-            border-left: 4px solid var(--aged-brass);
-        }
-
-        .warning-box h3 {
-            color: var(--aged-brass);
-            margin-top: 0;
-            font-size: 12px;
-            letter-spacing: 2px;
-        }
-
-        .warning-box p {
-            color: rgba(255,255,255,0.9);
-            margin: 0;
-        }
-
-        .highlight-box {
-            background-color: var(--stone);
-            border-left: 3px solid var(--deep-brass);
-            padding: 24px;
-            margin: 24px 0;
         }
 
         .legal-date {
@@ -129,23 +184,37 @@
             font-weight: 500;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 48px;
-            color: var(--navy);
-            text-decoration: none;
-            font-family: var(--font-ui);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-            border-bottom: 1px solid var(--aged-brass);
-            padding-bottom: 2px;
-            transition: color 0.3s;
+        .warning-box {
+            background-color: var(--navy);
+            color: var(--stone);
+            padding: 32px;
+            margin: 32px 0 48px 0;
+            border-left: 4px solid var(--aged-brass);
         }
 
-        .back-link:hover {
+        .warning-box h3 {
             color: var(--aged-brass);
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .warning-box p {
+            color: var(--sand);
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background-color: var(--cream);
+            border-left: 3px solid var(--deep-brass);
+            padding: 24px;
+            margin: 32px 0;
+        }
+
+        .highlight-box p {
+            color: var(--charcoal);
+            margin: 0;
+            font-size: 16px;
         }
 
         strong {
@@ -153,58 +222,301 @@
             font-weight: 600;
         }
 
+        /* ============================================================
+           UNIFIED FOOTER (Matches index.html exactly)
+           ============================================================ */
         footer {
             background-color: var(--navy);
-            color: var(--stone);
-            padding: 40px 0;
+            padding: 80px 0 40px;
             margin-top: 100px;
-            text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--aged-brass), transparent);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: start;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(184,149,107,0.15);
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+        }
+        .footer-logo-mark {
+            width: 72px; height: 72px;
+            background-color: var(--navy);
+            border-left: 6px solid var(--aged-brass);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .footer-logo-mark span {
+            font-family: var(--font-display);
+            font-size: 28px; font-weight: 700;
+            color: var(--stone);
+            letter-spacing: 0.12em;
+            line-height: 1;
+        }
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .footer-firm-name {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--stone);
+            letter-spacing: 0.04em;
+            line-height: 1.1;
+        }
+        .footer-tagline {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--deep-brass);
+            font-weight: 500;
+        }
+        .footer-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--sand);
+            text-decoration: none;
+            font-family: var(--font-ui);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            margin-top: 8px;
+            width: fit-content;
+        }
+        .footer-linkedin:hover { color: var(--aged-brass); }
+        .footer-linkedin svg { transition: transform 0.3s ease; }
+        .footer-linkedin:hover svg { transform: translateY(-2px); }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-link-column h4 {
+            font-family: var(--font-ui);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--aged-brass);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .footer-link-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-link-column a {
+            color: var(--sand);
+            text-decoration: none;
             font-family: var(--font-ui);
             font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        .footer-link-column a:hover { color: var(--aged-brass); }
+
+        .footer-legal {
+            padding-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .footer-disclaimer {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            line-height: 1.7;
+            color: var(--sand);
+            max-width: 1100px;
+        }
+        .footer-copyright {
+            font-family: var(--font-ui);
+            font-size: 11px;
+            color: var(--sand);
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+        }
+
+        /* ============================================================
+           MOBILE RESPONSIVE
+           ============================================================ */
+        @media (max-width: 1024px) {
+            nav { padding: 24px; }
+            .nav-links { display: none; }
+            .container { padding: 40px 24px; }
+            h1 { font-size: 32px; }
+            h2 { font-size: 22px; }
+            .footer-container { padding: 0 24px; }
+            footer { padding: 60px 0 32px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 48px; }
+            .footer-logo-mark { width: 60px; height: 60px; }
+            .footer-logo-mark span { font-size: 24px; }
+            .footer-firm-name { font-size: 22px; }
+            .footer-links-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+
+        @media (max-width: 480px) {
+            .footer-links-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <!-- ============================================================
+         UNIFIED NAVIGATION (With index.html# links for legal pages)
+         ============================================================ -->
+    <nav>
+        <a href="index.html" class="logo-container">
+            <div class="logo-mark"><span>AG</span></div>
+            <div class="logo-text">Avron Global</div>
+        </a>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#leadership">Leadership</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Spacer to prevent fixed nav from overlapping content -->
+    <div style="height: 100px;"></div>
+
+    <!-- ============================================================
+         MAIN CONTENT
+         ============================================================ -->
     <div class="container">
-        <a href="index.html" class="back-link">← Back to Avron Global</a>
 
         <h1>Important Disclaimer</h1>
         <div class="legal-date">Last Updated: February 2026</div>
 
         <div class="warning-box">
             <h3>Regulatory Status</h3>
-            <p>Avron Global Ltd is an independent strategic consultancy registered in England and Wales.</p>
+            <p>Avron Global Ltd. is an independent strategic advisory firm registered in England and Wales. We do not conduct regulated activities under the Financial Services and Markets Act 2000.</p>
         </div>
 
-        <h2>Consultancy Services Only</h2>
-        <p>Information provided by Avron Global constitutes strategic business consultancy. This includes advisory services, facilitation of introductions, and guidance on growth strategies and capital markets navigation.</p>
+        <h2>Advisory Services Only</h2>
+        <p>Information provided by Avron Global constitutes strategic business advisory. This includes counsel on growth strategies, organizational design, and advisory on capital architecture.</p>
 
-        <p>Our role is consultative and advisory. All investment decisions remain the sole responsibility of the client. We provide guidance; execution rests with the parties involved.</p>
+        <p>Our role is strictly consultative. We do not manage capital, execute transactions, or provide regulated investment advice. All strategic, operational, and financial decisions remain the sole responsibility of the client.</p>
 
         <div class="highlight-box">
-            <p><strong>Independent Advice Encouraged:</strong> Clients are encouraged to consult with authorised financial advisors, legal counsel, and tax professionals before making investment or financial decisions.</p>
+            <p><strong>Independent Advice Encouraged:</strong> Clients are strongly encouraged to consult with authorised financial advisors, legal counsel, and tax professionals before making any investment or financial decisions.</p>
         </div>
 
-        <h2>Introduction Services</h2>
-        <p>Avron Global facilitates preliminary introductions between clients and third-party investors or capital sources. These introductions are part of our strategic consultancy services. All parties conduct their own due diligence and negotiate terms directly.</p>
+        <h2>Scope of Network Access</h2>
+        <p>Avron Global provides strategic counsel to help clients navigate complex institutional landscapes. We do not act as a placement agent, broker, or intermediary in any transaction. All commercial decisions, due diligence, and negotiations are conducted directly by the principals involved.</p>
 
         <h2>Risk Acknowledgment</h2>
-        <p>Investing in private companies, emerging markets, and growth-stage enterprises involves substantial risk, including potential loss of capital and illiquidity. Past performance discussed in our materials is illustrative and educational; future results vary based on numerous factors.</p>
+        <p>Strategic advisory engagements involve inherent complexities. Historical advisory experience referenced in our materials is provided for context only and does not guarantee future outcomes. Clients bear sole responsibility for evaluating and bearing the risks associated with their independent business activities.</p>
 
         <h2>Third-Party Content</h2>
-        <p>This website may reference third-party service providers or include links to external sites. We present these for informational purposes. Clients are responsible for conducting their own evaluation of any third parties before engagement.</p>
+        <p>This website may reference third-party service providers or include links to external sites for informational purposes only. We do not endorse these entities, and clients are responsible for conducting their own evaluation of any third parties before engagement.</p>
 
         <h2>Jurisdictional Notice</h2>
-        <p>The information on this website is directed at sophisticated investors and enterprise leaders. Access is intended for parties capable of evaluating and bearing the risks described. Compliance with local laws and regulations remains the responsibility of the user.</p>
+        <p>The information on this website is directed at sophisticated investors, enterprise leaders, and institutional stewards. Access is intended for parties capable of evaluating the strategic complexities described. Compliance with local laws and regulations in your jurisdiction remains the sole responsibility of the user.</p>
 
         <h2>Contact</h2>
-        <p>For questions regarding this Disclaimer, please contact compliance@avronglobal.com.</p>
+        <p>For questions regarding this Disclaimer, please contact our compliance team at compliance@avronglobal.com.</p>
+
     </div>
 
+    <!-- ============================================================
+         UNIFIED FOOTER (Outside .container for full-width navy background)
+         ============================================================ -->
     <footer>
-        <div class="container" style="padding: 0 40px;">
-            © 2026 Avron Global Ltd.
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <!-- LEFT: Brand anchor -->
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo-container">
+                        <div class="footer-logo-mark"><span>AG</span></div>
+                        <div class="footer-logo-text">
+                            <div class="footer-firm-name">Avron Global</div>
+                            <div class="footer-tagline">Strategic Growth Advisory</div>
+                        </div>
+                    </a>
+                    <a href="https://uk.linkedin.com/company/avronglobal" target="_blank" class="footer-linkedin" aria-label="LinkedIn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
+                        </svg>
+                        Follow on LinkedIn
+                    </a>
+                </div>
+                
+                <!-- RIGHT: Link columns -->
+                <div class="footer-links-grid">
+                    <div class="footer-link-column">
+                        <h4>Firm</h4>
+                        <ul>
+                            <li><a href="index.html#about">About</a></li>
+                            <li><a href="index.html#services">Advisory Capabilities</a></li>
+                            <li><a href="index.html#leadership">Leadership</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                            <li><a href="disclaimer.html">Disclaimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- BOTTOM: Legal disclaimer + copyright -->
+            <div class="footer-legal">
+                <div class="footer-disclaimer">
+                    Avron Global Ltd. is registered in England and Wales. Company No. 13625677. Registered Office: Level 17 Dashwood House, Old Broad Street, London, England, EC2M 1QS. 
+                    We provide bespoke strategic advisory services and do not conduct regulated activities under the Financial Services and Markets Act 2000. 
+                    This website and its contents do not constitute an offer of securities, investment advice, or a solicitation to buy or sell any financial instrument in any jurisdiction.
+                </div>
+                <div class="footer-copyright">
+                    © 2026 Avron Global Ltd. All rights reserved.
+                </div>
+            </div>
         </div>
     </footer>
 
